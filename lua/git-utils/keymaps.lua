@@ -7,18 +7,18 @@ function M.setup()
 	local keymaps = config.options.keymaps
 
 	-- Create keymaps for each function
-	M.set_keymap(keymaps.function_one, core.function_one, "Function One")
-	M.set_keymap(keymaps.function_two, core.function_two, "Function Two")
-	M.set_keymap(keymaps.function_three, core.function_three, "Function Three")
+	M.set_keymap("n", keymaps.create_github_link, core.create_github_link, "Create github link")
+	M.set_keymap("v", keymaps.create_gist, core.create_gist, "Create gist")
+	M.set_keymap("n", keymaps.open_pr_for_current_line, core.open_pr_for_current_line, "Open PR for current line")
 end
 
 -- Helper to set keymap with proper options
-function M.set_keymap(key, func, desc)
+function M.set_keymap(mode, key, func, desc)
 	if not key or key == "" then
 		return
 	end
 
-	vim.keymap.set("n", key, func, {
+	vim.keymap.set(mode, key, func, {
 		desc = desc,
 		silent = true,
 		noremap = true,

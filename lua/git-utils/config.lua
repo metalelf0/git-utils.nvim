@@ -3,16 +3,14 @@ local M = {}
 -- Default configuration
 M.defaults = {
 	-- Plugin behavior options
-	option_one = true,
-	option_two = "default_value",
-	option_three = 100,
+	gist_token = vim.fn.getenv("GIST_TOKEN"),
 
 	-- Keymap options
 	disable_keymaps = false,
 	keymaps = {
-		function_one = "<leader>f1",
-		function_two = "<leader>f2",
-		function_three = "<leader>f3",
+		create_github_link = "<leader>gul",
+		create_gist = "<leader>gug",
+		open_pr_for_current_line = "<leader>gup",
 	},
 
 	-- Command options

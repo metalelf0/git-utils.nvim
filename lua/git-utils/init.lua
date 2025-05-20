@@ -25,8 +25,8 @@ function M.setup(opts)
 end
 
 -- Export public API functions
-M.function_one = M.core.function_one
-M.function_two = M.core.function_two
-M.function_three = M.core.function_three
+M.create_github_link = M.core.create_github_link
+M.create_gist = M.core.create_gist
+M.open_pr_for_current_line = M.core.open_pr_for_current_line
 
 return M

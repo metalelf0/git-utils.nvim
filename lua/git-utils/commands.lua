@@ -7,24 +7,25 @@ function M.setup()
 	local prefix = config.options.command_prefix
 
 	-- Create user commands for each function
-	vim.api.nvim_create_user_command(prefix .. "FunctionOne", function(opts)
-		core.function_one(opts.args)
+	vim.api.nvim_create_user_command(prefix .. "CreateGithubLink", function(opts)
+		core.create_github_link(opts.args)
 	end, {
-		desc = "Execute function one",
+		desc = "Create github link",
 		nargs = "?",
 	})
 
-	vim.api.nvim_create_user_command(prefix .. "FunctionTwo", function(opts)
-		core.function_two(opts.args)
+	vim.api.nvim_create_user_command(prefix .. "CreateGist", function(opts)
+		core.create_gist(opts.args, opts.range, opts.line1, opts.line2)
 	end, {
-		desc = "Execute function two",
+		desc = "Create gist",
 		nargs = "?",
+		range = true,
 	})
 
-	vim.api.nvim_create_user_command(prefix .. "FunctionThree", function(opts)
-		core.function_three(opts.args)
+	vim.api.nvim_create_user_command(prefix .. "OpenPrUrl", function(opts)
+		core.open_pr_for_current_line(opts.args)
 	end, {
-		desc = "Execute function three",
+		desc = "Open last PR for current line",
 		nargs = "?",
 	})
 end
