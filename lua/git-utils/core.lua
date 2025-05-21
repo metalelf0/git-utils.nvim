@@ -19,11 +19,6 @@ function M.create_github_link(_arg)
 	local branch = branch_handle:read("*a"):gsub("%s+", "")
 	branch_handle:close()
 
-	-- Get the relative path to the current file in the repository
-	local file_path_handle = io.popen("git rev-parse --show-prefix")
-	local relative_path = file_path_handle:read("*a"):gsub("%s+", "")
-	file_path_handle:close()
-
 	-- Get the filename inside the current buffer
 	local filename = vim.fn.expand("%:L")
 
@@ -31,7 +26,7 @@ function M.create_github_link(_arg)
 	local line_number = vim.fn.line(".")
 
 	-- Construct the GitHub URL
-	local github_url = git_url .. "/blob/" .. branch .. "/" .. relative_path .. filename .. "#L" .. line_number
+	local github_url = git_url .. "/blob/" .. branch .. "/" .. filename .. "#L" .. line_number
 
 	-- Output the URL (this can also copy it to the clipboard)
 	print(github_url)
